@@ -33,5 +33,6 @@ Thumbs.db
 selecoes.json
 jogadores.json
 
-jogadores.js
-selecoes.js
+/models/jogadores.js
+/models/selecoes.js
+
