@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const PORT = 4040;
+const PORT = process.env.PORT;
 const selecoes = require("./models/selecoes");
 const jogadores = require("./models/jogadores");
 app.use(express.json());
 const db = require("./models/db");
+require("dotenv").config();
 
 app.listen(PORT, () => {
   console.log(`servidor rodando na porta: http://localhost:${PORT}`);
