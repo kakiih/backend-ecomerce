@@ -28,4 +28,24 @@ router.get("/", (req, res) => {
     });
 });
 
+router.patch("/update/:id", (req, res) => {
+  selecoes
+    .update(
+      {
+        nome: req.body.nome,
+        continente: req.body.titulomundial,
+        titulomundial: req.body.titulomundial,
+      },
+      { where: { id: req.params.id } }
+    )
+    .then(() => {
+      res.send(
+        `A seleção de id ${req.params.id} foi atualizada com sucesso para ${req.body.nome}`
+      );
+    })
+    .catch((erro) => {
+      res.send(`Erro ao atualizar seleção, erro: ${erro}`);
+    });
+});
+
 module.exports = router;
