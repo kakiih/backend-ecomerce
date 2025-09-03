@@ -28,6 +28,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  selecoes
+    .findByPk(req.params.id)
+    .then((selecoes) => {
+      res.json({ selecoes: selecoes });
+    })
+    .catch((erro) => {
+      res.send(`Erro ao listar a seleção, erro: ${erro}`);
+    });
+});
+
 router.patch("/update/:id", (req, res) => {
   selecoes
     .update(
@@ -45,6 +56,17 @@ router.patch("/update/:id", (req, res) => {
     })
     .catch((erro) => {
       res.send(`Erro ao atualizar seleção, erro: ${erro}`);
+    });
+});
+
+router.delete("/delete/:id", (req, res) => {
+  selecoes
+    .destroy({ where: { id: req.params.id } })
+    .then(() => {
+      res.send("Seleção deletada com sucesso!");
+    })
+    .catch((erro) => {
+      res.send(`Erro ao deletar seleção, erro: ${erro}`);
     });
 });
 

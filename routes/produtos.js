@@ -57,4 +57,13 @@ router.patch("/update/:id", (req, res) => {
     });
 });
 
+router.delete("/delete/:id", (req, res) => {
+  produtos
+    .destroy({ where: { id: req.params.id } })
+    .then(res.send(`Produto deletado com sucesso!`))
+    .catch((erro) => {
+      res.send(`Erro ao deletar produto, erro: ${erro}`);
+    });
+});
+
 module.exports = router;

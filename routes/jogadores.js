@@ -49,7 +49,7 @@ router.patch("/update/:id", (req, res) => {
         posicao: req.body.posicao,
         clube: req.body.clube,
       },
-      { where: { id: req.params.id } },
+      { where: { id: req.params.id } }
     )
     .then(() => {
       res.send(
@@ -58,6 +58,17 @@ router.patch("/update/:id", (req, res) => {
     })
     .catch((erro) => {
       res.send(`Erro ao atualizar jogador, erro: ${erro}`);
+    });
+});
+
+router.delete("/delete/:id", (req, res) => {
+  jogadores
+    .destroy({ where: { id: req.params.id } })
+    .then(() => {
+      res.send("Jogador deletado com sucesso!");
+    })
+    .catch((erro) => {
+      res.send(`Erro ao deletar jogador, erro: ${erro}`);
     });
 });
 

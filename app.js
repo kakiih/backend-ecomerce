@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT;
 app.use(express.json());
-const db = require("./models/db");
 
 app.listen(PORT, () => {
   console.log(`servidor rodando na porta: http://localhost:${PORT}`);
