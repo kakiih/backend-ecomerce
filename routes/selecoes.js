@@ -44,7 +44,7 @@ router.patch("/update/:id", (req, res) => {
     .update(
       {
         nome: req.body.nome,
-        continente: req.body.titulomundial,
+        continente: req.body.continente,
         titulomundial: req.body.titulomundial,
       },
       { where: { id: req.params.id } }
